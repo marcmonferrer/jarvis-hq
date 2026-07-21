@@ -6,12 +6,12 @@
   <meta name="theme-color" content="#09090d">
   <meta name="description" content="JARVIS HQ — Centre de comandament personal de Marc Monferrer.">
   <title>JARVIS HQ</title>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="mobile-fix.css">
+  <link rel="stylesheet" href="styles.css?v=4">
+  <link rel="stylesheet" href="mobile-fix.css?v=4">
 </head>
 <body>
 <div class="shell">
-  <aside id="sidebar">
+  <aside id="sidebar" aria-label="Navegació d’escriptori">
     <div class="brand"><div class="brandmark">J</div><div><small>MARC × JARVIS</small><strong>JARVIS HQ</strong></div></div>
     <nav class="nav">
       <button class="active" data-go="top"><span>⌂</span>Inici</button>
@@ -20,11 +20,21 @@
     </nav>
     <div class="sidecard"><div class="online"><i></i>Sistema preparat</div><p>Els teus enllaços personals es guarden només en aquest dispositiu.</p></div>
   </aside>
-  <div class="menu-scrim" id="menuScrim" aria-hidden="true"></div>
+
+  <div class="mobile-backdrop" id="mobileBackdrop" aria-hidden="true"></div>
+  <nav class="mobile-panel" id="mobilePanel" aria-label="Navegació mòbil" aria-hidden="true">
+    <div class="mobile-panel-head">
+      <div><small>MARC × JARVIS</small><strong>Menú</strong></div>
+      <button class="mobile-close" id="mobileClose" aria-label="Tancar menú">×</button>
+    </div>
+    <button data-go="top"><span>⌂</span><div><strong>Inici</strong><small>Centre de comandament</small></div><b>›</b></button>
+    <button data-go="areas"><span>◇</span><div><strong>Àrees</strong><small>Consulting, finances i projectes</small></div><b>›</b></button>
+    <button data-go="accessos"><span>✦</span><div><strong>Accessos ràpids</strong><small>Xats i eines fixades</small></div><b>›</b></button>
+  </nav>
 
   <main id="top">
     <header class="topbar">
-      <div class="titlewrap"><button class="iconbtn menubtn" id="menu" aria-label="Obrir menú" aria-expanded="false">☰</button><div><div class="eyebrow">CENTRE DE COMANDAMENT</div><h1 id="greeting">Hola, Marc</h1></div></div>
+      <div class="titlewrap"><button class="iconbtn menubtn" id="menu" aria-label="Obrir menú" aria-controls="mobilePanel" aria-expanded="false">☰</button><div><div class="eyebrow">CENTRE DE COMANDAMENT</div><h1 id="greeting">Hola, Marc</h1></div></div>
       <div class="actions"><button class="iconbtn" id="share" title="Compartir">↗</button><button class="editbtn" id="edit">✎ Editar</button><div class="avatar">MM</div></div>
     </header>
 
@@ -62,6 +72,6 @@
   </form>
 </dialog>
 <div class="toast" id="toast"></div>
-<script src="app.js"></script>
+<script src="app.js?v=4"></script>
 </body>
 </html>
