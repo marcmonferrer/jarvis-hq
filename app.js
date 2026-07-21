@@ -40,9 +40,10 @@ const quickBox=document.getElementById('quick');
 const dialog=document.getElementById('dialog');
 const fields=document.getElementById('fields');
 const toast=document.getElementById('toast');
-const sidebar=document.getElementById('sidebar');
 const menuButton=document.getElementById('menu');
-const menuScrim=document.getElementById('menuScrim');
+const mobilePanel=document.getElementById('mobilePanel');
+const mobileBackdrop=document.getElementById('mobileBackdrop');
+const mobileClose=document.getElementById('mobileClose');
 const isAndroid=/Android/i.test(navigator.userAgent);
 
 function render(){
@@ -77,11 +78,12 @@ function buildAndroidChatGPTIntent(url){
 function openLink(key){
   const url=links[key]||defaults[key];
   if(!url){showToast('Configura primer aquest enllaç');return;}
+  closeMenu();
 
   if(isAndroid){
     const appIntent=buildAndroidChatGPTIntent(url);
     if(appIntent){
-      window.location.href=appIntent;
+      window.location.assign(appIntent);
       return;
     }
   }
@@ -89,26 +91,32 @@ function openLink(key){
   window.open(url,'_blank','noopener,noreferrer');
 }
 
-function setMenu(open){
-  const mobile=window.matchMedia('(max-width:760px)').matches;
-  if(!mobile){
-    sidebar.classList.remove('open');
-    menuScrim.classList.remove('open');
-    document.body.classList.remove('menu-open');
-    menuButton.setAttribute('aria-expanded','false');
-    menuButton.textContent='☰';
-    return;
-  }
+function openMenu(){
+  if(!window.matchMedia('(max-width:760px)').matches)return;
+  mobilePanel.classList.add('open');
+  mobileBackdrop.classList.add('open');
+  mobilePanel.setAttribute('aria-hidden','false');
+  mobileBackdrop.setAttribute('aria-hidden','false');
+  menuButton.setAttribute('aria-expanded','true');
+  document.body.classList.add('menu-open');
+}
 
-  sidebar.classList.toggle('open',open);
-  menuScrim.classList.toggle('open',open);
-  document.body.classList.toggle('menu-open',open);
-  menuButton.setAttribute('aria-expanded',String(open));
-  menuButton.textContent=open?'×':'☰';
+function closeMenu(){
+  mobilePanel.classList.remove('open');
+  mobileBackdrop.classList.remove('open');
+  mobilePanel.setAttribute('aria-hidden','true');
+  mobileBackdrop.setAttribute('aria-hidden','true');
+  menuButton.setAttribute('aria-expanded','false');
+  document.body.classList.remove('menu-open');
+}
+
+function toggleMenu(){
+  if(mobilePanel.classList.contains('open'))closeMenu();
+  else openMenu();
 }
 
 function openSettings(){
-  setMenu(false);
+  closeMenu();
   fields.innerHTML=Object.keys(labels).map(key=>`
     <div class="field">
       <label for="${key}">${labels[key]}</label>
@@ -125,12 +133,13 @@ function showToast(text){
 
 document.addEventListener('click',event=>{
   const opener=event.target.closest('[data-open]');
-  if(opener)openLink(opener.dataset.open);
+  if(opener){openLink(opener.dataset.open);return;}
 
   const nav=event.target.closest('[data-go]');
   if(nav){
-    document.getElementById(nav.dataset.go).scrollIntoView({behavior:'smooth'});
-    setMenu(false);
+    const target=document.getElementById(nav.dataset.go);
+    closeMenu();
+    window.setTimeout(()=>target?.scrollIntoView({behavior:'smooth',block:'start'}),80);
   }
 });
 
@@ -139,20 +148,17 @@ document.addEventListener('keydown',event=>{
     event.preventDefault();
     openLink(event.target.dataset.open);
   }
-  if(event.key==='Escape')setMenu(false);
+  if(event.key==='Escape')closeMenu();
 });
 
 document.getElementById('edit').addEventListener('click',openSettings);
 document.getElementById('customize').addEventListener('click',openSettings);
 document.getElementById('manage').addEventListener('click',openSettings);
-
-menuButton.addEventListener('click',event=>{
-  event.stopPropagation();
-  setMenu(!sidebar.classList.contains('open'));
-});
-menuScrim.addEventListener('click',()=>setMenu(false));
+menuButton.addEventListener('click',toggleMenu);
+mobileClose.addEventListener('click',closeMenu);
+mobileBackdrop.addEventListener('click',closeMenu);
 window.addEventListener('resize',()=>{
-  if(!window.matchMedia('(max-width:760px)').matches)setMenu(false);
+  if(!window.matchMedia('(max-width:760px)').matches)closeMenu();
 });
 
 document.getElementById('form').addEventListener('submit',event=>{
@@ -189,3 +195,4 @@ const hour=new Date().getHours();
 const greeting=hour<13?'Bon dia':hour<20?'Bona tarda':'Bona nit';
 document.getElementById('greeting').textContent=`${greeting}, Marc`;
 render();
+closeMenu();
