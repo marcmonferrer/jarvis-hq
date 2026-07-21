@@ -1,0 +1,60 @@
+@media (max-width:760px){
+  aside{
+    top:76px;
+    left:15px;
+    right:15px;
+    width:auto;
+    height:auto;
+    max-height:calc(100dvh - 92px);
+    padding:12px;
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:20px;
+    background:#111117;
+    box-shadow:0 24px 70px rgba(0,0,0,.65);
+    backdrop-filter:none;
+    -webkit-backdrop-filter:none;
+    overflow:auto;
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    transform:translateY(-12px) scale(.98);
+    transition:opacity .2s ease,transform .2s ease,visibility .2s ease;
+    z-index:1000;
+  }
+
+  aside.open{
+    left:15px;
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+    transform:translateY(0) scale(1);
+  }
+
+  aside .brand,
+  aside .sidecard{
+    display:none;
+  }
+
+  aside .nav{
+    gap:6px;
+  }
+
+  aside .nav button{
+    width:100%;
+    min-height:48px;
+    padding:13px 15px;
+    border:1px solid transparent;
+    background:rgba(255,255,255,.035);
+  }
+
+  aside .nav button:hover,
+  aside .nav button.active{
+    border-color:rgba(255,255,255,.08);
+    background:linear-gradient(90deg,rgba(255,71,126,.2),rgba(159,98,255,.12));
+  }
+
+  .topbar{
+    position:relative;
+    z-index:1001;
+  }
+}
