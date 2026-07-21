@@ -1,83 +1,134 @@
-.menu-scrim{display:none}
+.mobile-backdrop,.mobile-panel{display:none}
 
 @media (max-width:760px){
   body.menu-open{overflow:hidden}
 
-  .menu-scrim{
+  #sidebar{display:none!important}
+
+  .mobile-backdrop{
     display:block;
     position:fixed;
     inset:0;
-    background:rgba(5,5,10,.72);
-    -webkit-backdrop-filter:blur(5px);
-    backdrop-filter:blur(5px);
+    background:rgba(4,4,9,.78);
     opacity:0;
     visibility:hidden;
     pointer-events:none;
-    transition:opacity .18s ease,visibility .18s ease;
+    transition:opacity .2s ease,visibility .2s ease;
     z-index:998;
   }
 
-  .menu-scrim.open{
+  .mobile-backdrop.open{
     opacity:1;
     visibility:visible;
     pointer-events:auto;
   }
 
-  aside{
-    display:none;
+  .mobile-panel{
+    display:block;
     position:fixed;
-    top:78px;
+    top:82px;
     left:14px;
     right:14px;
-    width:auto;
-    height:auto;
-    max-height:calc(100dvh - 96px);
-    padding:12px;
+    padding:14px;
     border:1px solid rgba(255,255,255,.13);
-    border-radius:20px;
+    border-radius:22px;
     background:#111117;
-    box-shadow:0 24px 70px rgba(0,0,0,.72);
-    -webkit-backdrop-filter:none;
-    backdrop-filter:none;
-    overflow:auto;
+    box-shadow:0 28px 80px rgba(0,0,0,.72);
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    transform:translateY(-12px) scale(.985);
+    transform-origin:top center;
+    transition:opacity .2s ease,transform .2s ease,visibility .2s ease;
     z-index:999;
   }
 
-  aside.open{
+  .mobile-panel.open{
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+    transform:translateY(0) scale(1);
+  }
+
+  .mobile-panel-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:3px 3px 13px;
+  }
+
+  .mobile-panel-head small{
     display:block;
-    animation:menuDrop .18s ease-out both;
+    color:#8d8d9b;
+    font-size:10px;
+    font-weight:850;
+    letter-spacing:.16em;
   }
 
-  @keyframes menuDrop{
-    from{opacity:0;transform:translateY(-10px) scale(.985)}
-    to{opacity:1;transform:translateY(0) scale(1)}
+  .mobile-panel-head strong{
+    display:block;
+    margin-top:3px;
+    font-size:20px;
   }
 
-  aside .brand,
-  aside .sidecard{
-    display:none;
-  }
-
-  aside .nav{
-    display:grid;
-    gap:7px;
-  }
-
-  aside .nav button{
-    width:100%;
-    min-height:50px;
-    padding:13px 15px;
-    border:1px solid rgba(255,255,255,.055);
-    border-radius:14px;
-    background:rgba(255,255,255,.035);
-    color:#d8d8e2;
-  }
-
-  aside .nav button:hover,
-  aside .nav button.active{
-    border-color:rgba(255,255,255,.11);
-    background:linear-gradient(90deg,rgba(255,71,126,.22),rgba(159,98,255,.13));
+  .mobile-close{
+    width:40px;
+    height:40px;
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:13px;
+    background:rgba(255,255,255,.045);
     color:#fff;
+    font-size:24px;
+    line-height:1;
+  }
+
+  .mobile-panel>button:not(.mobile-close){
+    width:100%;
+    min-height:64px;
+    margin-top:8px;
+    padding:11px 13px;
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:16px;
+    background:rgba(255,255,255,.035);
+    color:#fff;
+    display:grid;
+    grid-template-columns:38px 1fr auto;
+    gap:12px;
+    align-items:center;
+    text-align:left;
+  }
+
+  .mobile-panel>button:not(.mobile-close):active{
+    transform:scale(.99);
+    background:linear-gradient(90deg,rgba(255,71,126,.2),rgba(159,98,255,.12));
+  }
+
+  .mobile-panel>button>span{
+    width:38px;
+    height:38px;
+    border-radius:12px;
+    display:grid;
+    place-items:center;
+    background:linear-gradient(135deg,rgba(255,138,54,.2),rgba(255,71,126,.16));
+    font-size:19px;
+  }
+
+  .mobile-panel>button strong{
+    display:block;
+    font-size:15px;
+  }
+
+  .mobile-panel>button small{
+    display:block;
+    margin-top:3px;
+    color:#9999a7;
+    font-size:11px;
+  }
+
+  .mobile-panel>button b{
+    color:#8e8e9c;
+    font-size:22px;
+    font-weight:500;
   }
 
   .topbar{
