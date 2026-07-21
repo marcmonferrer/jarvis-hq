@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ca">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#09090d">
+  <meta name="description" content="JARVIS HQ — Centre de comandament personal de Marc Monferrer.">
+  <title>JARVIS HQ</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="shell">
+  <aside id="sidebar">
+    <div class="brand"><div class="brandmark">J</div><div><small>MARC × JARVIS</small><strong>JARVIS HQ</strong></div></div>
+    <nav class="nav">
+      <button class="active" data-go="top"><span>⌂</span>Inici</button>
+      <button data-go="areas"><span>◇</span>Àrees</button>
+      <button data-go="accessos"><span>✦</span>Accessos ràpids</button>
+    </nav>
+    <div class="sidecard"><div class="online"><i></i>Sistema preparat</div><p>Els teus enllaços personals es guarden només en aquest dispositiu.</p></div>
+  </aside>
+
+  <main id="top">
+    <header class="topbar">
+      <div class="titlewrap"><button class="iconbtn menubtn" id="menu">☰</button><div><div class="eyebrow">CENTRE DE COMANDAMENT</div><h1 id="greeting">Hola, Marc</h1></div></div>
+      <div class="actions"><button class="iconbtn" id="share" title="Compartir">↗</button><button class="editbtn" id="edit">✎ Editar</button><div class="avatar">MM</div></div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="status"><i></i> Tot a punt</span>
+        <h2>Tot el que importa,<br><span>en un sol lloc.</span></h2>
+        <p>La teva porta d’entrada a ChatGPT, als projectes d’IA, a les finances i a tot el que estem construint junts.</p>
+        <div class="heroactions"><button class="primary" data-open="command">Obrir ChatGPT ↗</button><button class="secondary" id="customize">Personalitzar enllaços</button></div>
+      </div>
+      <div class="visual"><div class="orbit"></div><div class="core">J</div></div>
+    </section>
+
+    <section class="block" id="areas">
+      <div class="sectionhead"><div><div class="eyebrow">ÀREES PRINCIPALS</div><h3>Tria el teu focus</h3></div><span class="pill">4 espais</span></div>
+      <div class="grid" id="cards"></div>
+    </section>
+
+    <section class="block" id="accessos">
+      <div class="sectionhead"><div><div class="eyebrow">ACCÉS RÀPID</div><h3>Xats i projectes fixats</h3></div><button class="secondary" id="manage">Gestionar</button></div>
+      <div class="quick" id="quick"></div>
+    </section>
+
+    <div class="privacy"><div>🛡️</div><div><strong>Privat per disseny</strong><p>La web és pública, però els enllaços personalitzats no es publiquen a GitHub: queden al navegador del teu dispositiu.</p></div></div>
+    <footer><span>JARVIS HQ · v1.0</span><span>Dissenyat per Marc Monferrer &amp; Jarvis</span></footer>
+  </main>
+</div>
+
+<dialog id="dialog">
+  <form method="dialog" class="modal" id="form">
+    <div class="modalhead"><div><div class="eyebrow">CONFIGURACIÓ LOCAL</div><h3>Personalitza els accessos</h3></div><button class="close" value="cancel">×</button></div>
+    <p class="intro">Enganxa l’enllaç de cada xat o projecte. Els canvis només es desen en aquest dispositiu.</p>
+    <div class="fields" id="fields"></div>
+    <div class="modalactions"><button type="button" class="reset" id="reset">Restablir valors</button><div><button class="secondary" value="cancel">Cancel·lar</button><button class="primary" value="default">Desar canvis</button></div></div>
+  </form>
+</dialog>
+<div class="toast" id="toast"></div>
+<script src="app.js"></script>
+</body>
+</html>
