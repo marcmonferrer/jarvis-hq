@@ -42,7 +42,6 @@ const fields=document.getElementById('fields');
 const toast=document.getElementById('toast');
 const menuButton=document.getElementById('menu');
 const mobilePanel=document.getElementById('mobilePanel');
-const mobileBackdrop=document.getElementById('mobileBackdrop');
 const mobileClose=document.getElementById('mobileClose');
 const isAndroid=/Android/i.test(navigator.userAgent);
 
@@ -94,20 +93,16 @@ function openLink(key){
 function openMenu(){
   if(!window.matchMedia('(max-width:760px)').matches)return;
   mobilePanel.classList.add('open');
-  mobileBackdrop.classList.add('open');
   mobilePanel.setAttribute('aria-hidden','false');
-  mobileBackdrop.setAttribute('aria-hidden','false');
   menuButton.setAttribute('aria-expanded','true');
-  document.body.classList.add('menu-open');
+  menuButton.textContent='×';
 }
 
 function closeMenu(){
   mobilePanel.classList.remove('open');
-  mobileBackdrop.classList.remove('open');
   mobilePanel.setAttribute('aria-hidden','true');
-  mobileBackdrop.setAttribute('aria-hidden','true');
   menuButton.setAttribute('aria-expanded','false');
-  document.body.classList.remove('menu-open');
+  menuButton.textContent='☰';
 }
 
 function toggleMenu(){
@@ -156,7 +151,6 @@ document.getElementById('customize').addEventListener('click',openSettings);
 document.getElementById('manage').addEventListener('click',openSettings);
 menuButton.addEventListener('click',toggleMenu);
 mobileClose.addEventListener('click',closeMenu);
-mobileBackdrop.addEventListener('click',closeMenu);
 window.addEventListener('resize',()=>{
   if(!window.matchMedia('(max-width:760px)').matches)closeMenu();
 });
