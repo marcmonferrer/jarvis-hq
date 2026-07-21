@@ -6,8 +6,34 @@
   <meta name="theme-color" content="#09090d">
   <meta name="description" content="JARVIS HQ — Centre de comandament personal de Marc Monferrer.">
   <title>JARVIS HQ</title>
-  <link rel="stylesheet" href="styles.css?v=5">
-  <link rel="stylesheet" href="mobile-fix.css?v=5">
+  <link rel="stylesheet" href="styles.css?v=6">
+  <link rel="stylesheet" href="mobile-fix.css?v=6">
+  <style>
+    #mobilePanel[hidden]{display:none!important}
+    @media(max-width:760px){
+      #mobilePanel:not([hidden]){
+        display:block!important;
+        position:static!important;
+        width:100%!important;
+        min-width:100%!important;
+        max-width:none!important;
+        height:auto!important;
+        min-height:0!important;
+        max-height:none!important;
+        margin:0 0 16px!important;
+        padding:14px!important;
+        overflow:visible!important;
+        opacity:1!important;
+        visibility:visible!important;
+        transform:none!important;
+        border:1px solid rgba(255,255,255,.13)!important;
+        border-radius:22px!important;
+        background:#111117!important;
+        box-shadow:0 20px 50px rgba(0,0,0,.35)!important;
+      }
+    }
+    @media(min-width:761px){#mobilePanel{display:none!important}}
+  </style>
 </head>
 <body>
 <div class="shell">
@@ -27,7 +53,7 @@
       <div class="actions"><button class="iconbtn" id="share" title="Compartir">↗</button><button class="editbtn" id="edit">✎ Editar</button><div class="avatar">MM</div></div>
     </header>
 
-    <nav class="mobile-panel" id="mobilePanel" aria-label="Navegació mòbil" aria-hidden="true">
+    <nav class="mobile-panel" id="mobilePanel" aria-label="Navegació mòbil" aria-hidden="true" hidden>
       <div class="mobile-panel-head">
         <div><small>MARC × JARVIS</small><strong>Menú</strong></div>
         <button class="mobile-close" id="mobileClose" aria-label="Tancar menú">×</button>
@@ -73,6 +99,6 @@
   </form>
 </dialog>
 <div class="toast" id="toast"></div>
-<script src="app.js?v=5"></script>
+<script src="app.js?v=6"></script>
 </body>
 </html>
