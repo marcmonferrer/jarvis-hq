@@ -62,16 +62,30 @@ function render(){
     </div>`).join('');
 }
 
-function buildAndroidChatGPTIntent(url){
+function makeAndroidIntent(url){
   try{
     const parsed=new URL(url);
     if(parsed.protocol!=='https:'||parsed.hostname!=='chatgpt.com')return null;
+
+    if(parsed.pathname==='/'&&!parsed.search&&!parsed.hash){
+      return 'intent://#Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;package=com.openai.chatgpt;end';
+    }
+
     const destination=`${parsed.host}${parsed.pathname}${parsed.search}${parsed.hash}`;
     const fallback=encodeURIComponent(url);
-    return `intent://${destination}#Intent;scheme=https;package=com.openai.chatgpt;S.browser_fallback_url=${fallback};end`;
+    return `intent://${destination}#Intent;scheme=https;package=com.openai.chatgpt;action=android.intent.action.VIEW;category=android.intent.category.BROWSABLE;S.browser_fallback_url=${fallback};end`;
   }catch{
     return null;
   }
+}
+
+function launchIntent(intentUrl){
+  const link=document.createElement('a');
+  link.href=intentUrl;
+  link.style.display='none';
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
 }
 
 function openLink(key){
@@ -80,9 +94,9 @@ function openLink(key){
   closeMenu();
 
   if(isAndroid){
-    const appIntent=buildAndroidChatGPTIntent(url);
-    if(appIntent){
-      window.location.assign(appIntent);
+    const intentUrl=makeAndroidIntent(url);
+    if(intentUrl){
+      launchIntent(intentUrl);
       return;
     }
   }
@@ -92,22 +106,22 @@ function openLink(key){
 
 function openMenu(){
   if(!window.matchMedia('(max-width:760px)').matches)return;
-  mobilePanel.classList.add('open');
+  mobilePanel.hidden=false;
   mobilePanel.setAttribute('aria-hidden','false');
   menuButton.setAttribute('aria-expanded','true');
   menuButton.textContent='×';
 }
 
 function closeMenu(){
-  mobilePanel.classList.remove('open');
+  mobilePanel.hidden=true;
   mobilePanel.setAttribute('aria-hidden','true');
   menuButton.setAttribute('aria-expanded','false');
   menuButton.textContent='☰';
 }
 
 function toggleMenu(){
-  if(mobilePanel.classList.contains('open'))closeMenu();
-  else openMenu();
+  if(mobilePanel.hidden)openMenu();
+  else closeMenu();
 }
 
 function openSettings(){
@@ -134,7 +148,7 @@ document.addEventListener('click',event=>{
   if(nav){
     const target=document.getElementById(nav.dataset.go);
     closeMenu();
-    window.setTimeout(()=>target?.scrollIntoView({behavior:'smooth',block:'start'}),80);
+    window.setTimeout(()=>target?.scrollIntoView({behavior:'smooth',block:'start'}),50);
   }
 });
 
