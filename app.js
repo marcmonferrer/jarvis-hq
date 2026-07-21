@@ -40,6 +40,10 @@ const quickBox=document.getElementById('quick');
 const dialog=document.getElementById('dialog');
 const fields=document.getElementById('fields');
 const toast=document.getElementById('toast');
+const sidebar=document.getElementById('sidebar');
+const menuButton=document.getElementById('menu');
+const menuScrim=document.getElementById('menuScrim');
+const isAndroid=/Android/i.test(navigator.userAgent);
 
 function render(){
   cards.innerHTML=areas.map(a=>`
@@ -58,13 +62,53 @@ function render(){
     </div>`).join('');
 }
 
+function buildAndroidChatGPTIntent(url){
+  try{
+    const parsed=new URL(url);
+    if(parsed.protocol!=='https:'||parsed.hostname!=='chatgpt.com')return null;
+    const destination=`${parsed.host}${parsed.pathname}${parsed.search}${parsed.hash}`;
+    const fallback=encodeURIComponent(url);
+    return `intent://${destination}#Intent;scheme=https;package=com.openai.chatgpt;S.browser_fallback_url=${fallback};end`;
+  }catch{
+    return null;
+  }
+}
+
 function openLink(key){
   const url=links[key]||defaults[key];
   if(!url){showToast('Configura primer aquest enllaç');return;}
+
+  if(isAndroid){
+    const appIntent=buildAndroidChatGPTIntent(url);
+    if(appIntent){
+      window.location.href=appIntent;
+      return;
+    }
+  }
+
   window.open(url,'_blank','noopener,noreferrer');
 }
 
+function setMenu(open){
+  const mobile=window.matchMedia('(max-width:760px)').matches;
+  if(!mobile){
+    sidebar.classList.remove('open');
+    menuScrim.classList.remove('open');
+    document.body.classList.remove('menu-open');
+    menuButton.setAttribute('aria-expanded','false');
+    menuButton.textContent='☰';
+    return;
+  }
+
+  sidebar.classList.toggle('open',open);
+  menuScrim.classList.toggle('open',open);
+  document.body.classList.toggle('menu-open',open);
+  menuButton.setAttribute('aria-expanded',String(open));
+  menuButton.textContent=open?'×':'☰';
+}
+
 function openSettings(){
+  setMenu(false);
   fields.innerHTML=Object.keys(labels).map(key=>`
     <div class="field">
       <label for="${key}">${labels[key]}</label>
@@ -86,7 +130,7 @@ document.addEventListener('click',event=>{
   const nav=event.target.closest('[data-go]');
   if(nav){
     document.getElementById(nav.dataset.go).scrollIntoView({behavior:'smooth'});
-    document.getElementById('sidebar').classList.remove('open');
+    setMenu(false);
   }
 });
 
@@ -95,12 +139,21 @@ document.addEventListener('keydown',event=>{
     event.preventDefault();
     openLink(event.target.dataset.open);
   }
+  if(event.key==='Escape')setMenu(false);
 });
 
 document.getElementById('edit').addEventListener('click',openSettings);
 document.getElementById('customize').addEventListener('click',openSettings);
 document.getElementById('manage').addEventListener('click',openSettings);
-document.getElementById('menu').addEventListener('click',()=>document.getElementById('sidebar').classList.toggle('open'));
+
+menuButton.addEventListener('click',event=>{
+  event.stopPropagation();
+  setMenu(!sidebar.classList.contains('open'));
+});
+menuScrim.addEventListener('click',()=>setMenu(false));
+window.addEventListener('resize',()=>{
+  if(!window.matchMedia('(max-width:760px)').matches)setMenu(false);
+});
 
 document.getElementById('form').addEventListener('submit',event=>{
   if(event.submitter?.value==='cancel')return;
