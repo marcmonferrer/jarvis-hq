@@ -1,0 +1,98 @@
+.messaging-dock{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+  margin:0 0 18px
+}
+
+.messaging-link{
+  --app-color:#fff;
+  position:relative;
+  overflow:hidden;
+  min-height:74px;
+  padding:13px 16px;
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:20px;
+  background:linear-gradient(135deg,color-mix(in srgb,var(--app-color) 16%,#111117),rgba(255,255,255,.025));
+  color:#fff;
+  display:grid;
+  grid-template-columns:48px minmax(0,1fr) auto;
+  gap:13px;
+  align-items:center;
+  text-align:left;
+  box-shadow:0 14px 36px rgba(0,0,0,.2);
+  transition:transform .2s,border-color .2s,background .2s
+}
+
+.messaging-link:before{
+  content:"";
+  position:absolute;
+  width:130px;
+  height:130px;
+  right:-55px;
+  top:-70px;
+  border-radius:50%;
+  background:var(--app-color);
+  filter:blur(44px);
+  opacity:.14;
+  pointer-events:none
+}
+
+.messaging-link:hover{
+  transform:translateY(-2px);
+  border-color:color-mix(in srgb,var(--app-color) 45%,rgba(255,255,255,.1));
+  background:linear-gradient(135deg,color-mix(in srgb,var(--app-color) 21%,#111117),rgba(255,255,255,.04))
+}
+
+.messaging-link:active{transform:scale(.99)}
+.messaging-link.whatsapp{--app-color:#25d366}
+.messaging-link.telegram{--app-color:#2aabee}
+
+.messaging-icon{
+  position:relative;
+  width:48px;
+  height:48px;
+  border-radius:15px;
+  display:grid;
+  place-items:center;
+  background:var(--app-color);
+  color:#07120b;
+  font-size:21px;
+  font-weight:950;
+  box-shadow:0 10px 24px color-mix(in srgb,var(--app-color) 25%,transparent)
+}
+
+.telegram .messaging-icon{color:#fff;font-size:24px;padding-left:2px}
+.messaging-copy{position:relative;min-width:0}
+.messaging-copy small{
+  display:block;
+  margin-bottom:3px;
+  color:color-mix(in srgb,var(--app-color) 62%,#fff);
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:.12em
+}
+.messaging-copy strong{display:block;font-size:16px}
+.messaging-arrow{position:relative;color:var(--app-color);font-size:20px;font-weight:800}
+
+@media(max-width:760px){
+  .messaging-dock{gap:9px;margin-bottom:13px}
+  .messaging-link{
+    min-height:67px;
+    padding:10px 11px;
+    grid-template-columns:43px minmax(0,1fr) auto;
+    gap:10px;
+    border-radius:17px
+  }
+  .messaging-icon{width:43px;height:43px;border-radius:13px;font-size:18px}
+  .telegram .messaging-icon{font-size:21px}
+  .messaging-copy strong{font-size:14px}
+  .messaging-copy small{font-size:9px;letter-spacing:.08em}
+  .messaging-arrow{font-size:17px}
+}
+
+@media(max-width:410px){
+  .messaging-link{grid-template-columns:40px minmax(0,1fr);padding:10px}
+  .messaging-icon{width:40px;height:40px}
+  .messaging-arrow{display:none}
+}
