@@ -68,12 +68,17 @@ def calculate_quote(result: dict[str, Any]) -> dict[str, Any]:
     closes = [value for value in quote.get("close", []) if finite(value)]
 
     current = meta.get("regularMarketPrice")
-    previous = meta.get("chartPreviousClose", meta.get("previousClose"))
+    # `chartPreviousClose` is the close immediately before the requested range,
+    # not necessarily the previous trading session. For a true daily move we
+    # must prefer `previousClose`, then fall back to the last two daily closes.
+    previous = meta.get("previousClose")
 
     if not finite(current) and closes:
         current = closes[-1]
     if not finite(previous) and len(closes) > 1:
         previous = closes[-2]
+    if not finite(previous):
+        previous = meta.get("chartPreviousClose")
 
     if not finite(current) or not finite(previous) or previous == 0:
         raise RuntimeError("Incomplete quote data")
