@@ -5,16 +5,17 @@ Centre de comandament personal de Marc Monferrer.
 ## Funcions
 
 - Interfície responsive per a mòbil i ordinador.
+- **Today Command Brief** amb tres prioritats diàries, seguiment de progrés i una nota ràpida.
 - Rutina diària amb accessos a premsa esportiva, Gmail, YouTube, Trade Republic i plataformes de contingut.
 - Espais per a AI Consulting, Finances, Idees i Aprenentatge.
 - Accessos a ChatGPT, projectes publicats, GitHub i correu professional.
 - Enllaços personalitzables des del botó **Editar**.
-- Els enllaços privats es desen només al navegador amb `localStorage`.
+- Les prioritats, notes i enllaços privats es desen només al navegador amb `localStorage`.
 - Sense contrasenyes, tokens, base de dades ni servidor.
 
 ## Privacitat
 
-El codi és públic, però els enllaços personalitzats no es guarden al repositori. Cada dispositiu conserva la seva configuració local.
+El codi és públic, però els enllaços personalitzats, les prioritats i les notes no es guarden al repositori. Cada dispositiu conserva la seva configuració local.
 
 ## Publicació
 
