@@ -19,3 +19,11 @@ El codi és públic, però els enllaços personalitzats no es guarden al reposit
 ## Publicació
 
 El projecte està preparat per publicar-se amb GitHub Pages des de la branca `main` i la carpeta `/root`.
+
+---
+
+## Professional profile
+
+| **in · PROFESSIONAL PROFILE** |
+|---|
+| **Marc Monferrer**<br>**AI Consultant & Front-End Developer**<br>📍 Barcelona, Catalonia, Spain · Catalan · Spanish · English<br><br>I turn real ideas and needs into practical solutions using AI, automation and web development, with a particular focus on accessibility and functional diversity.<br><br>`AI Consulting` · `Web & automation` · `Accessibility`<br><br>[**View LinkedIn profile ↗**](https://www.linkedin.com/in/marcmonferrer/) |
