@@ -34,6 +34,7 @@
   <link rel="stylesheet" href="messaging.css?v=3">
   <link rel="stylesheet" href="linkedin.css?v=2">
   <link rel="stylesheet" href="portfolio.css?v=1">
+  <link rel="stylesheet" href="today.css?v=1">
 </head>
 <body>
 <div class="shell">
@@ -45,6 +46,7 @@
 
     <nav class="nav">
       <button class="active" data-go="top"><span>⌂</span>Home</button>
+      <button data-go="brief"><span>✓</span>Today</button>
       <button data-go="routine"><span>☀</span>Daily routine</button>
       <button data-go="areas"><span>◇</span>Areas</button>
       <button data-go="accessos"><span>✦</span>Projects</button>
@@ -66,6 +68,7 @@
               <div><small>MARC × JARVIS</small><strong>Menu</strong></div>
             </div>
             <button data-go="top"><span>⌂</span><div><strong>Home</strong><small>Personal command center</small></div><b>›</b></button>
+            <button data-go="brief"><span>✓</span><div><strong>Today</strong><small>Priorities and quick capture</small></div><b>›</b></button>
             <button data-go="routine"><span>☀</span><div><strong>Daily routine</strong><small>News, email and tools</small></div><b>›</b></button>
             <button data-go="areas"><span>◇</span><div><strong>Areas</strong><small>Consulting, finance and learning</small></div><b>›</b></button>
             <button data-go="accessos"><span>✦</span><div><strong>Projects</strong><small>Pinned chats and shortcuts</small></div><b>›</b></button>
@@ -105,13 +108,51 @@
         <h2>Everything that matters,<br><span>in one place.</span></h2>
         <p>Your gateway to daily tools, ChatGPT, AI projects, finance and everything we are building together.</p>
         <div class="heroactions">
-          <button class="primary" data-go="routine">Start the day ↓</button>
+          <button class="primary" data-go="brief">Plan today ↓</button>
           <button class="secondary" data-open="command">Open ChatGPT ↗</button>
         </div>
       </div>
       <div class="visual" aria-hidden="true">
         <div class="orbit"></div>
         <div class="core">J</div>
+      </div>
+    </section>
+
+    <section class="block today-brief" id="brief">
+      <div class="sectionhead">
+        <div><div class="eyebrow">TODAY COMMAND BRIEF</div><h3>Plan the day in 60 seconds</h3></div>
+        <span class="pill brief-progress" id="briefProgress">0 of 3 complete</span>
+      </div>
+      <div class="brief-grid">
+        <article class="brief-card focus-card">
+          <div class="brief-card-head">
+            <div class="brief-heading">
+              <span class="brief-icon" aria-hidden="true">✓</span>
+              <div><small>FOCUS</small><h4>Top priorities</h4></div>
+            </div>
+            <span class="brief-date" id="briefDate"></span>
+          </div>
+          <div class="priority-list" id="priorityList" aria-label="Today's priorities"></div>
+          <button class="brief-reset" id="briefReset" type="button">Reset today</button>
+        </article>
+
+        <article class="brief-card capture-card">
+          <div class="brief-card-head">
+            <div class="brief-heading">
+              <span class="brief-icon" aria-hidden="true">✦</span>
+              <div><small>CAPTURE</small><h4>Quick note</h4></div>
+            </div>
+          </div>
+          <p class="capture-copy">Save an idea, reminder or question before it disappears. Everything remains on this device.</p>
+          <textarea class="brief-notes" id="briefNotes" maxlength="1200" placeholder="What is on your mind?" aria-label="Quick note"></textarea>
+          <div class="capture-meta">
+            <span id="briefSaveStatus">Saved locally</span>
+            <span id="briefCharacterCount">0 / 1200</span>
+          </div>
+          <div class="capture-footer">
+            <button class="secondary compact" data-open="command">Open ChatGPT ↗</button>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -144,7 +185,7 @@
       <div><strong>Private by design</strong><p>The website is public, but customized links are never published to GitHub. They remain in this device's browser.</p></div>
     </div>
 
-    <footer><span>JARVIS HQ · v1.8</span><span>Designed by Marc Monferrer &amp; Jarvis</span></footer>
+    <footer><span>JARVIS HQ · v1.9</span><span>Designed by Marc Monferrer &amp; Jarvis</span></footer>
   </main>
 </div>
 
@@ -169,5 +210,6 @@
 <script src="linkedin.js?v=2"></script>
 <script src="english.js?v=1"></script>
 <script src="portfolio.js?v=1"></script>
+<script src="today.js?v=1"></script>
 </body>
 </html>
