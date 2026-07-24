@@ -1,5 +1,42 @@
 {
-  "generated_at": null,
-  "source": "JARVIS HQ scheduled market feed",
-  "assets": {}
+  "assets": {
+    "fidelity": {
+      "currency": "EUR",
+      "marketState": "CLOSED",
+      "percent": 0.0,
+      "previous": 14.0,
+      "price": 14.0,
+      "source": "feed",
+      "timestamp": 1784889023
+    },
+    "ftse": {
+      "currency": "EUR",
+      "marketState": "CLOSED",
+      "percent": 0.24464831804281695,
+      "previous": 163.5,
+      "price": 163.9,
+      "source": "feed",
+      "timestamp": 1784889760
+    },
+    "nasdaq": {
+      "currency": "EUR",
+      "marketState": "CLOSED",
+      "percent": 0.18126045733407062,
+      "previous": 1434.4,
+      "price": 1437.0,
+      "source": "feed",
+      "timestamp": 1784889752
+    },
+    "spacex": {
+      "currency": "USD",
+      "marketState": "CLOSED",
+      "percent": -11.197053406998156,
+      "previous": 27.15,
+      "price": 24.11,
+      "source": "feed",
+      "timestamp": 1784837047
+    }
+  },
+  "generated_at": "2026-07-24T10:57:42+00:00",
+  "source": "JARVIS HQ scheduled market feed"
 }
