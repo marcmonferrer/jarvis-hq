@@ -8,6 +8,10 @@
     telegram:{
       packageName:'org.telegram.messenger',
       fallback:'https://web.telegram.org/k/'
+    },
+    amazon:{
+      packageName:'com.amazon.mShop.android.shopping',
+      fallback:'https://www.amazon.es/'
     }
   };
 
@@ -17,10 +21,12 @@
     defaults.prime='https://www.primevideo.com/';
     defaults.instagram='https://www.instagram.com/marcmonferrer/';
     defaults.threads='https://www.threads.net/@marcmonferrer';
+    defaults.amazon='https://www.amazon.es/';
 
     labels.prime='Prime Video';
     labels.instagram='Instagram de Marc';
     labels.threads='Threads de Marc';
+    labels.amazon='Amazon Shopping';
 
     const streaming=routineGroups.find(group=>group.title==='Streaming');
     if(streaming&&!streaming.items.some(item=>item.key==='prime')){
@@ -48,8 +54,19 @@
         </div>`);
     }
 
+    if(dock&&!dock.querySelector('.shopping-dock')){
+      dock.insertAdjacentHTML('beforeend',`
+        <div class="shopping-dock" aria-label="Compres">
+          <button class="shopping-link amazon" data-messaging="amazon" aria-label="Obrir Amazon Shopping">
+            <span class="shopping-icon" aria-hidden="true">a</span>
+            <span class="shopping-copy"><small>COMPRES</small><strong>Amazon Shopping</strong><em>Obrir l'app o Amazon.es</em></span>
+            <span class="shopping-arrow" aria-hidden="true">↗</span>
+          </button>
+        </div>`);
+    }
+
     const version=document.querySelector('footer span:first-child');
-    if(version)version.textContent='JARVIS HQ · v1.3';
+    if(version)version.textContent='JARVIS HQ · v1.4';
 
     if(typeof render==='function')render();
   }
