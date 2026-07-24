@@ -68,13 +68,10 @@
   width:86px;
   height:86px;
   border:5px solid #111117;
-  border-radius:26px;
-  display:grid;
-  place-items:center;
-  background:linear-gradient(135deg,#ffb05c,#ff477e 55%,#9f62ff);
-  color:#fff;
-  font-size:25px;
-  font-weight:950;
+  border-radius:50%;
+  display:block;
+  object-fit:cover;
+  background:#f3f3f3;
   box-shadow:0 15px 35px rgba(0,0,0,.35)
 }
 
@@ -164,7 +161,7 @@
   .linkedin-cover span{max-width:210px;text-align:right;line-height:1.4}
   .linkedin-profile-body{padding:0 18px 19px}
   .linkedin-identity{grid-template-columns:70px minmax(0,1fr);gap:13px;margin-top:-35px}
-  .linkedin-avatar{width:70px;height:70px;border-width:4px;border-radius:21px;font-size:21px}
+  .linkedin-avatar{width:70px;height:70px;border-width:4px}
   .linkedin-identity h3{font-size:22px}
   .linkedin-identity p{font-size:13px;line-height:1.35}
   .linkedin-identity small{font-size:10px;line-height:1.4}
