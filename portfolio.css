@@ -1,0 +1,200 @@
+.portfolio-today{
+  margin-top:16px;
+  padding-top:15px;
+  border-top:1px solid rgba(255,255,255,.08)
+}
+
+.portfolio-today-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom:10px
+}
+
+.portfolio-today-title small{
+  display:block;
+  color:#55e6a5;
+  font-size:9px;
+  font-weight:950;
+  letter-spacing:.13em
+}
+
+.portfolio-today-title strong{
+  display:block;
+  margin-top:3px;
+  font-size:14px;
+  letter-spacing:-.015em
+}
+
+.portfolio-refresh{
+  width:33px;
+  height:33px;
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:11px;
+  display:grid;
+  place-items:center;
+  background:rgba(255,255,255,.035);
+  color:#b7bcc4;
+  font-size:16px;
+  transition:transform .2s,background .2s,color .2s
+}
+
+.portfolio-refresh:hover{
+  background:rgba(255,255,255,.07);
+  color:#fff;
+  transform:rotate(12deg)
+}
+
+.portfolio-refresh.loading{
+  animation:portfolio-spin .85s linear infinite
+}
+
+@keyframes portfolio-spin{to{transform:rotate(360deg)}}
+
+.portfolio-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:8px
+}
+
+.market-card{
+  --market-color:#8e95a0;
+  position:relative;
+  overflow:hidden;
+  min-width:0;
+  min-height:106px;
+  padding:11px;
+  border:1px solid color-mix(in srgb,var(--market-color) 25%,rgba(255,255,255,.07));
+  border-radius:15px;
+  background:linear-gradient(145deg,color-mix(in srgb,var(--market-color) 10%,#111117),rgba(255,255,255,.018));
+  color:#fff;
+  text-align:left;
+  transition:transform .2s,border-color .2s,background .2s
+}
+
+.market-card:before{
+  content:"";
+  position:absolute;
+  width:80px;
+  height:80px;
+  right:-36px;
+  top:-42px;
+  border-radius:50%;
+  background:var(--market-color);
+  filter:blur(30px);
+  opacity:.14;
+  pointer-events:none
+}
+
+.market-card:hover{
+  transform:translateY(-2px);
+  border-color:color-mix(in srgb,var(--market-color) 48%,rgba(255,255,255,.08));
+  background:linear-gradient(145deg,color-mix(in srgb,var(--market-color) 15%,#111117),rgba(255,255,255,.026))
+}
+
+.market-card:active{transform:scale(.985)}
+.market-card.up{--market-color:#55e6a5}
+.market-card.down{--market-color:#ff617a}
+.market-card.flat{--market-color:#9aa1aa}
+.market-card.error{--market-color:#777e88}
+
+.market-card-top{
+  position:relative;
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:6px
+}
+
+.market-badge{
+  width:29px;
+  height:29px;
+  flex:0 0 29px;
+  border-radius:9px;
+  display:grid;
+  place-items:center;
+  background:color-mix(in srgb,var(--market-color) 18%,#1a1a21);
+  color:color-mix(in srgb,var(--market-color) 78%,#fff);
+  font-size:10px;
+  font-weight:950
+}
+
+.market-symbol{
+  position:relative;
+  max-width:82px;
+  overflow:hidden;
+  color:#818894;
+  font-size:8px;
+  font-weight:850;
+  letter-spacing:.06em;
+  text-overflow:ellipsis;
+  white-space:nowrap
+}
+
+.market-name{
+  position:relative;
+  display:block;
+  min-height:28px;
+  margin-top:9px;
+  color:#e9edf1;
+  font-size:11px;
+  font-weight:850;
+  line-height:1.25
+}
+
+.market-change{
+  position:relative;
+  display:block;
+  margin-top:4px;
+  color:var(--market-color);
+  font-size:19px;
+  font-weight:950;
+  letter-spacing:-.035em
+}
+
+.market-status{
+  position:relative;
+  display:block;
+  margin-top:2px;
+  overflow:hidden;
+  color:#858c96;
+  font-size:8px;
+  text-overflow:ellipsis;
+  white-space:nowrap
+}
+
+.market-card.loading .market-change,
+.market-card.loading .market-status{
+  color:transparent;
+  border-radius:5px;
+  background:linear-gradient(90deg,rgba(255,255,255,.04),rgba(255,255,255,.1),rgba(255,255,255,.04));
+  background-size:200% 100%;
+  animation:portfolio-shimmer 1.2s linear infinite
+}
+
+.market-card.loading .market-change{width:72px;height:21px}
+.market-card.loading .market-status{width:88px;height:8px;margin-top:5px}
+
+@keyframes portfolio-shimmer{to{background-position:-200% 0}}
+
+.portfolio-note{
+  display:flex;
+  justify-content:space-between;
+  gap:8px;
+  margin-top:9px;
+  color:#777e88;
+  font-size:8px;
+  line-height:1.35
+}
+
+.portfolio-note span:last-child{text-align:right}
+
+@media(max-width:410px){
+  .portfolio-grid{gap:7px}
+  .market-card{min-height:101px;padding:9px;border-radius:13px}
+  .market-name{font-size:10px}
+  .market-change{font-size:17px}
+  .market-symbol{max-width:62px;font-size:7px}
+  .portfolio-note{font-size:7px}
+}
