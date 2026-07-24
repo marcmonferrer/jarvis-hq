@@ -12,6 +12,14 @@
     amazon:{
       packageName:'com.amazon.mShop.android.shopping',
       fallback:'https://www.amazon.es/'
+    },
+    bbva:{
+      packageName:'com.bbva.bbvacontigo',
+      fallback:'https://www.bbva.es/personas/banca-online.html'
+    },
+    salut:{
+      packageName:'cat.gencat.mobi.lamevasalut',
+      fallback:'https://lamevasalut.gencat.cat/ca/web/cps/'
     }
   };
 
@@ -22,15 +30,33 @@
     defaults.instagram='https://www.instagram.com/marcmonferrer/';
     defaults.threads='https://www.threads.net/@marcmonferrer';
     defaults.amazon='https://www.amazon.es/';
+    defaults.bbva='https://www.bbva.es/personas/banca-online.html';
+    defaults.salut='https://lamevasalut.gencat.cat/ca/web/cps/';
 
     labels.prime='Prime Video';
     labels.instagram='Instagram de Marc';
     labels.threads='Threads de Marc';
     labels.amazon='Amazon Shopping';
+    labels.bbva='BBVA Espanya';
+    labels.salut='La Meva Salut';
 
     const streaming=routineGroups.find(group=>group.title==='Streaming');
     if(streaming&&!streaming.items.some(item=>item.key==='prime')){
       streaming.items.push({key:'prime',icon:'PV',sub:'Prime Video'});
+    }
+
+    const finances=routineGroups.find(group=>group.title==='Finances');
+    if(finances&&!finances.items.some(item=>item.key==='bbva')){
+      finances.items.push({key:'bbva',icon:'B',sub:'Compte, targetes i banca online'});
+    }
+
+    if(!routineGroups.some(group=>group.title==='Salut')){
+      routineGroups.push({
+        title:'Salut',
+        icon:'❤',
+        accent:'#ff5c75',
+        items:[{key:'salut',icon:'LMS',sub:'Informació, visites i tràmits mèdics'}]
+      });
     }
 
     if(typeof links!=='undefined'){
@@ -66,12 +92,12 @@
     }
 
     const version=document.querySelector('footer span:first-child');
-    if(version)version.textContent='JARVIS HQ · v1.4';
+    if(version)version.textContent='JARVIS HQ · v1.5';
 
     if(typeof render==='function')render();
   }
 
-  function openMessagingApp(key){
+  function openApp(key){
     const app=apps[key];
     if(!app)return;
 
@@ -90,11 +116,22 @@
     link.remove();
   }
 
+  const baseOpenLink=window.openLink;
+  if(typeof baseOpenLink==='function'){
+    window.openLink=function(key){
+      if((key==='bbva'||key==='salut')&&apps[key]){
+        openApp(key);
+        return;
+      }
+      baseOpenLink(key);
+    };
+  }
+
   document.addEventListener('click',event=>{
     const button=event.target.closest('[data-messaging]');
     if(!button)return;
     event.preventDefault();
-    openMessagingApp(button.dataset.messaging);
+    openApp(button.dataset.messaging);
   });
 
   addPersonalLinks();
