@@ -11,6 +11,49 @@
     }
   };
 
+  function addPersonalLinks(){
+    if(typeof defaults==='undefined'||typeof labels==='undefined'||typeof routineGroups==='undefined')return;
+
+    defaults.prime='https://www.primevideo.com/';
+    defaults.instagram='https://www.instagram.com/marcmonferrer/';
+    defaults.threads='https://www.threads.net/@marcmonferrer';
+
+    labels.prime='Prime Video';
+    labels.instagram='Instagram de Marc';
+    labels.threads='Threads de Marc';
+
+    const streaming=routineGroups.find(group=>group.title==='Streaming');
+    if(streaming&&!streaming.items.some(item=>item.key==='prime')){
+      streaming.items.push({key:'prime',icon:'PV',sub:'Prime Video'});
+    }
+
+    if(typeof links!=='undefined'){
+      links={...defaults,...links};
+    }
+
+    const dock=document.querySelector('.messaging-dock');
+    if(dock&&!dock.querySelector('.social-dock')){
+      dock.insertAdjacentHTML('beforeend',`
+        <div class="social-dock" aria-label="Xarxes socials de Marc">
+          <button class="social-link instagram" data-open="instagram" aria-label="Obrir l'Instagram de Marc">
+            <span class="social-icon" aria-hidden="true">◎</span>
+            <span class="social-copy"><small>XARXA SOCIAL</small><strong>Instagram</strong><em>@marcmonferrer</em></span>
+            <span class="social-arrow" aria-hidden="true">↗</span>
+          </button>
+          <button class="social-link threads" data-open="threads" aria-label="Obrir el Threads de Marc">
+            <span class="social-icon" aria-hidden="true">@</span>
+            <span class="social-copy"><small>XARXA SOCIAL</small><strong>Threads</strong><em>@marcmonferrer</em></span>
+            <span class="social-arrow" aria-hidden="true">↗</span>
+          </button>
+        </div>`);
+    }
+
+    const version=document.querySelector('footer span:first-child');
+    if(version)version.textContent='JARVIS HQ · v1.3';
+
+    if(typeof render==='function')render();
+  }
+
   function openMessagingApp(key){
     const app=apps[key];
     if(!app)return;
@@ -36,4 +79,6 @@
     event.preventDefault();
     openMessagingApp(button.dataset.messaging);
   });
+
+  addPersonalLinks();
 })();
