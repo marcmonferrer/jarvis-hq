@@ -87,13 +87,14 @@
 
   function applyData(asset,data){
     const card=getCard(asset);
-    if(!card)return;
+    if(!card||!Number.isFinite(data.percent))return;
 
     const direction=directionFor(data.percent);
     card.className=`market-card ${direction}`;
     card.querySelector('.market-change').textContent=formatPercent(data.percent);
     card.querySelector('.market-status').textContent=statusText(data);
-    card.setAttribute('aria-label',`${asset.name}: ${data.percent>=0?'up':'down'} ${Math.abs(data.percent).toFixed(2)} percent today. Open market quote.`);
+    const movement=data.percent>=0?'up':'down';
+    card.setAttribute('aria-label',`${asset.name}: ${movement} ${Math.abs(data.percent).toFixed(2)} percent today. Open market quote.`);
     quoteState.set(asset.key,data);
     updateTimestamp();
   }
@@ -109,11 +110,11 @@
 
   function updateTimestamp(){
     if(!updatedLabel)return;
-    const live=[...quoteState.values()].filter(item=>item.source==='live');
+    const feed=[...quoteState.values()].filter(item=>item.source==='feed');
     const cached=[...quoteState.values()].filter(item=>item.source==='cache');
 
-    if(live.length){
-      const newest=Math.max(...live.map(item=>item.timestamp||0));
+    if(feed.length){
+      const newest=Math.max(...feed.map(item=>item.timestamp||0));
       updatedLabel.textContent=`Updated ${formatTime(newest)}`;
       return;
     }
@@ -126,62 +127,21 @@
     updatedLabel.textContent='Waiting for market data';
   }
 
-  function calculateFromResult(result){
-    const meta=result?.meta||{};
-    const closes=(result?.indicators?.quote?.[0]?.close||[]).filter(value=>Number.isFinite(value));
-
-    let current=Number(meta.regularMarketPrice);
-    let previous=Number(meta.chartPreviousClose ?? meta.previousClose);
-
-    if(!Number.isFinite(current)&&closes.length)current=closes.at(-1);
-    if(!Number.isFinite(previous)&&closes.length>1)previous=closes.at(-2);
-
-    if(!Number.isFinite(current)||!Number.isFinite(previous)||previous===0){
-      throw new Error('Incomplete quote data');
-    }
-
-    const timestamp=Number(meta.regularMarketTime)||Number(result?.timestamp?.at(-1))||Math.floor(Date.now()/1000);
-
-    return {
-      percent:((current-previous)/previous)*100,
-      price:current,
-      previous,
-      currency:meta.currency||'',
-      timestamp,
-      marketState:meta.marketState||'CLOSED',
-      source:'live'
-    };
+  function showCachedData(cache){
+    assets.forEach(asset=>{
+      const saved=cache[asset.key];
+      if(saved&&Number.isFinite(saved.percent)){
+        applyData(asset,{...saved,source:'cache'});
+      }
+    });
   }
 
-  async function fetchFromHost(asset,host){
-    const url=`https://${host}/v8/finance/chart/${encodeURIComponent(asset.symbol)}?interval=1d&range=5d&includePrePost=false&events=div%2Csplits`;
-    const response=await fetch(url,{cache:'no-store',mode:'cors'});
-    if(!response.ok)throw new Error(`Quote request failed: ${response.status}`);
+  async function fetchMarketFeed(){
+    const response=await fetch(`market-data.json?ts=${Date.now()}`,{cache:'no-store'});
+    if(!response.ok)throw new Error(`Market feed request failed: ${response.status}`);
     const payload=await response.json();
-    const result=payload?.chart?.result?.[0];
-    if(!result)throw new Error(payload?.chart?.error?.description||'No quote returned');
-    return calculateFromResult(result);
-  }
-
-  async function fetchQuote(asset){
-    try{return await fetchFromHost(asset,'query1.finance.yahoo.com');}
-    catch{return fetchFromHost(asset,'query2.finance.yahoo.com');}
-  }
-
-  async function loadAsset(asset,cache){
-    const saved=cache[asset.key];
-    if(saved&&Number.isFinite(saved.percent)){
-      applyData(asset,{...saved,source:'cache'});
-    }
-
-    try{
-      const data=await fetchQuote(asset);
-      cache[asset.key]={...data,savedAt:Date.now()};
-      writeCache(cache);
-      applyData(asset,data);
-    }catch{
-      if(!saved)applyError(asset);
-    }
+    if(!payload||typeof payload.assets!=='object')throw new Error('Invalid market feed');
+    return payload.assets;
   }
 
   async function refreshAll(){
@@ -191,7 +151,26 @@
     }
 
     const cache=readCache();
-    await Promise.allSettled(assets.map(asset=>loadAsset(asset,cache)));
+    showCachedData(cache);
+
+    try{
+      const feed=await fetchMarketFeed();
+      assets.forEach(asset=>{
+        const data=feed[asset.key];
+        if(data&&Number.isFinite(data.percent)){
+          const normalized={...data,source:'feed'};
+          cache[asset.key]={...normalized,savedAt:Date.now()};
+          applyData(asset,normalized);
+        }else if(!cache[asset.key]){
+          applyError(asset);
+        }
+      });
+      writeCache(cache);
+    }catch{
+      assets.forEach(asset=>{
+        if(!cache[asset.key])applyError(asset);
+      });
+    }
 
     if(refreshButton){
       refreshButton.classList.remove('loading');
