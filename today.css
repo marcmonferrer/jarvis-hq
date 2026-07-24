@@ -1,0 +1,85 @@
+.today-brief{scroll-margin-top:20px}
+.brief-progress{transition:.2s}
+.brief-progress.complete{
+  color:#caffea;
+  border-color:rgba(85,230,165,.25);
+  background:rgba(85,230,165,.08)
+}
+.brief-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:15px}
+.brief-card{
+  position:relative;overflow:hidden;min-height:310px;padding:23px;
+  border:1px solid var(--line);border-radius:24px;
+  background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.018))
+}
+.brief-card:before{
+  content:"";position:absolute;width:190px;height:190px;border-radius:50%;filter:blur(55px);
+  opacity:.15;right:-75px;top:-80px;pointer-events:none
+}
+.focus-card:before{background:var(--orange)}
+.capture-card:before{background:var(--purple)}
+.brief-card-head{position:relative;display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:19px}
+.brief-heading{display:flex;align-items:center;gap:12px}
+.brief-heading small{display:block;color:var(--muted);font-size:10px;font-weight:850;letter-spacing:.15em}
+.brief-heading h4{margin:4px 0 0;font-size:20px;letter-spacing:-.02em}
+.brief-icon{
+  width:46px;height:46px;border-radius:15px;display:grid;place-items:center;font-size:20px;font-weight:950;
+  border:1px solid var(--line);background:linear-gradient(135deg,rgba(255,138,54,.22),rgba(255,71,126,.14))
+}
+.capture-card .brief-icon{background:linear-gradient(135deg,rgba(159,98,255,.24),rgba(255,71,126,.12))}
+.brief-date{color:var(--muted);font-size:12px;font-weight:750;text-align:right}
+.priority-list{position:relative;display:grid;gap:10px}
+.priority-item{
+  display:grid;grid-template-columns:42px minmax(0,1fr);align-items:center;gap:10px;
+  min-height:56px;padding:7px 12px 7px 7px;border:1px solid rgba(255,255,255,.075);
+  border-radius:16px;background:rgba(255,255,255,.035);transition:.2s
+}
+.priority-item:focus-within{border-color:rgba(255,138,54,.35);background:rgba(255,255,255,.055)}
+.priority-toggle{
+  width:42px;height:42px;border-radius:13px;border:1px solid rgba(255,255,255,.1);
+  background:rgba(255,255,255,.055);color:transparent;display:grid;place-items:center;font-weight:950;transition:.2s
+}
+.priority-toggle:hover:not(:disabled){border-color:rgba(85,230,165,.35);background:rgba(85,230,165,.08)}
+.priority-toggle:disabled{cursor:not-allowed;opacity:.42}
+.priority-toggle[aria-pressed="true"]{
+  color:#07140e;border-color:rgba(85,230,165,.58);background:var(--green);
+  box-shadow:0 8px 24px rgba(85,230,165,.18)
+}
+.priority-item input{
+  width:100%;min-width:0;border:0;outline:0;background:transparent;color:#fff;
+  font-size:14px;font-weight:720;padding:8px 2px
+}
+.priority-item input::placeholder{color:#777785;font-weight:620}
+.priority-item.done input{color:#898995;text-decoration:line-through}
+.brief-reset{
+  position:relative;margin-top:14px;padding:8px 0;border:0;background:transparent;color:#ff91b0;
+  font-size:12px;font-weight:850
+}
+.capture-card{display:flex;flex-direction:column}
+.capture-copy{position:relative;color:var(--muted);font-size:13px;line-height:1.55;margin:-7px 0 13px}
+.brief-notes{
+  position:relative;flex:1;width:100%;min-height:145px;resize:vertical;
+  border:1px solid rgba(255,255,255,.08);border-radius:17px;background:rgba(6,6,10,.48);
+  color:#fff;padding:15px;font:inherit;font-size:14px;line-height:1.6;outline:0
+}
+.brief-notes::placeholder{color:#747482}
+.brief-notes:focus{border-color:rgba(159,98,255,.45);box-shadow:0 0 0 3px rgba(159,98,255,.09)}
+.capture-meta{position:relative;display:flex;justify-content:space-between;gap:12px;margin-top:9px;color:#777785;font-size:11px}
+#briefSaveStatus[data-state="saving"]{color:#d9b87a}
+#briefSaveStatus[data-state="saved"]{color:#90e9bf}
+#briefSaveStatus[data-state="error"]{color:#ff8aa7}
+.capture-footer{position:relative;display:flex;justify-content:flex-end;margin-top:14px}
+.capture-footer .secondary{padding:11px 14px;font-size:12px}
+
+@media(max-width:960px){
+  .brief-grid{grid-template-columns:1fr}
+  .brief-card{min-height:0}
+}
+
+@media(max-width:760px){
+  .brief-card{padding:19px;border-radius:21px}
+  .brief-card-head{align-items:flex-start}
+  .brief-date{max-width:120px}
+  .priority-item{grid-template-columns:40px minmax(0,1fr);padding:6px 10px 6px 6px}
+  .priority-toggle{width:40px;height:40px}
+  .capture-footer .secondary{width:100%}
+}
