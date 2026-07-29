@@ -1,0 +1,20 @@
+.professional-footer{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:9px 18px;
+  margin:0 0 34px;
+  padding:22px 0;
+  border-top:1px solid rgba(255,255,255,.09);
+  color:#a0a0af;
+  font-size:.78rem
+}
+.professional-footer strong{color:#f5f5f8;font-size:.9rem}
+.professional-footer span{margin-right:auto}
+.professional-footer a{color:#d6d6df;text-decoration:none}
+.professional-footer a:hover,.professional-footer a:focus-visible{color:#fff}
+.professional-footer--fallback{margin-top:0}
+@media(max-width:700px){
+  .professional-footer{display:grid;gap:8px}
+  .professional-footer span{margin:0}
+}

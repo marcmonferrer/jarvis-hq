@@ -1,0 +1,35 @@
+.weather-widget{
+  min-height:66px;margin:-4px 0 18px;padding:10px 14px;border:1px solid var(--line);
+  border-radius:19px;background:linear-gradient(115deg,rgba(115,168,255,.09),rgba(159,98,255,.045),rgba(255,255,255,.025));
+  display:flex;align-items:center;justify-content:space-between;gap:16px;overflow:hidden
+}
+.weather-main{display:flex;align-items:center;gap:12px;min-width:0}
+.weather-icon{
+  width:44px;height:44px;flex:0 0 44px;border-radius:14px;display:grid;place-items:center;font-size:24px;
+  border:1px solid rgba(115,168,255,.2);background:linear-gradient(135deg,rgba(115,168,255,.19),rgba(159,98,255,.12))
+}
+.weather-place{display:block;color:#858594;font-size:9px;font-weight:850;letter-spacing:.15em}
+.weather-reading{display:flex;align-items:baseline;gap:9px;margin-top:3px}
+.weather-temperature{font-size:23px;line-height:1;font-weight:900;letter-spacing:-.04em}
+.weather-condition{color:#c8c8d2;font-size:12px;font-weight:750;white-space:nowrap}
+.weather-range{display:flex;align-items:center;gap:10px;white-space:nowrap}
+.weather-range span{
+  min-width:58px;padding:8px 10px;border:1px solid rgba(255,255,255,.07);border-radius:13px;
+  background:rgba(255,255,255,.03);text-align:center
+}
+.weather-range small{display:block;color:#7f7f8d;font-size:8px;font-weight:850;letter-spacing:.12em}
+.weather-range strong{display:block;margin-top:2px;font-size:13px}
+.weather-meta{color:#777785;font-size:10px;font-weight:700}
+.weather-widget[data-state="loading"] .weather-icon{animation:weatherPulse 1.4s ease-in-out infinite}
+.weather-widget[data-state="unavailable"]{border-color:rgba(255,138,54,.2)}
+@keyframes weatherPulse{50%{opacity:.45;transform:scale(.94)}}
+
+@media(max-width:640px){
+  .weather-widget{margin:-2px 0 14px;padding:9px 11px;border-radius:17px;gap:9px}
+  .weather-icon{width:40px;height:40px;flex-basis:40px;font-size:21px}
+  .weather-temperature{font-size:21px}
+  .weather-condition{max-width:100px;overflow:hidden;text-overflow:ellipsis}
+  .weather-range{gap:6px}
+  .weather-range span{min-width:48px;padding:7px 8px}
+  .weather-meta{display:none}
+}

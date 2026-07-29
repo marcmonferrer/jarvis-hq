@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#09090d">
+  <meta name="application-name" content="JARVIS HQ Portfolio Demo">
+  <meta name="apple-mobile-web-app-title" content="JARVIS HQ Demo">
+  <meta name="description" content="JARVIS HQ is Marc Monferrer's public portfolio demo of a privacy-first AI operating system.">
+  <link rel="canonical" href="https://marcmonferrer.github.io/jarvis-hq/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="JARVIS HQ Portfolio Demo">
+  <meta property="og:title" content="JARVIS HQ · Portfolio Demo">
+  <meta property="og:description" content="Explore a privacy-first command center through a fully fictional interactive case study.">
+  <meta property="og:url" content="https://marcmonferrer.github.io/jarvis-hq/">
+  <meta property="og:image" content="https://marcmonferrer.github.io/jarvis-hq/portfolio-social.png">
+  <meta property="og:image:secure_url" content="https://marcmonferrer.github.io/jarvis-hq/portfolio-social.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="JARVIS HQ portfolio demo by Marc Monferrer">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="JARVIS HQ · Portfolio Demo">
+  <meta name="twitter:description" content="A privacy-first AI operating system portfolio demo by Marc Monferrer.">
+  <meta name="twitter:image" content="https://marcmonferrer.github.io/jarvis-hq/portfolio-social.png">
+
+  <title>JARVIS HQ · Portfolio Demo</title>
+  <link rel="icon" href="portfolio-favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="portfolio-demo.css">
+  <link rel="stylesheet" href="weather.css">
+  <link rel="stylesheet" href="sports-briefing.css">
+  <link rel="stylesheet" href="market-demo.css">
+  <link rel="stylesheet" href="professional-contact.css">
+</head>
+<body>
+  <div class="demo-shell">
+    <aside class="demo-sidebar" aria-label="Portfolio demo navigation">
+      <a class="demo-brand" href="#top" aria-label="JARVIS HQ Portfolio Demo home">
+        <span class="demo-brandmark" aria-hidden="true">J</span>
+        <span><small>PORTFOLIO DEMO</small><strong>JARVIS HQ</strong></span>
+      </a>
+
+      <nav class="demo-nav">
+        <a class="active" href="#top"><span>⌂</span>Overview</a>
+        <a href="#today"><span>✓</span>Today</a>
+        <a href="#markets"><span>↗</span>Market demo</a>
+        <a href="#sports"><span>◉</span>Sports</a>
+        <a href="#modules"><span>◇</span>Modules</a>
+        <a href="#case-study"><span>◫</span>Case study</a>
+        <a href="#architecture"><span>⌘</span>Architecture</a>
+      </nav>
+
+      <div class="demo-sidebar-card">
+        <span class="demo-ready"><i></i>Sanitized public demo</span>
+        <p>All scenarios, names, messages, accounts, balances and market values are fictional.</p>
+      </div>
+    </aside>
+
+    <main id="top">
+      <header class="demo-topbar">
+        <details class="demo-mobile-nav">
+          <summary aria-label="Open navigation">☰</summary>
+          <nav>
+            <a href="#top">Overview</a>
+            <a href="#today">Today</a>
+            <a href="#markets">Market demo</a>
+            <a href="#sports">Sports</a>
+            <a href="#modules">Modules</a>
+            <a href="#case-study">Case study</a>
+            <a href="#architecture">Architecture</a>
+          </nav>
+        </details>
+        <div>
+          <small>PORTFOLIO PROJECT</small>
+          <strong>JARVIS HQ</strong>
+        </div>
+        <div class="demo-top-actions">
+          <button type="button" id="shareDemo" aria-label="Share portfolio demo">↗</button>
+          <a href="mailto:marcmonferrer.ai@gmail.com">Contact Marc</a>
+        </div>
+      </header>
+
+      <section class="weather-widget" data-weather-widget data-state="loading" aria-label="Loading Barcelona weather" aria-live="polite">
+        <div class="weather-main">
+          <span class="weather-icon" data-weather-icon aria-hidden="true">◌</span>
+          <div>
+            <span class="weather-place">BARCELONA WEATHER</span>
+            <div class="weather-reading">
+              <strong class="weather-temperature" data-weather-temperature>—°</strong>
+              <span class="weather-condition" data-weather-condition>Loading conditions</span>
+            </div>
+          </div>
+        </div>
+        <div class="weather-range" aria-label="Today's high and low">
+          <span><small>HIGH</small><strong data-weather-high>—°</strong></span>
+          <span><small>LOW</small><strong data-weather-low>—°</strong></span>
+          <small class="weather-meta" data-weather-meta>Connecting</small>
+        </div>
+      </section>
+
+      <section class="demo-hero" aria-labelledby="hero-title">
+        <div class="demo-hero-copy">
+          <span class="demo-status"><i></i> System ready · sanitized public demo</span>
+          <p class="demo-kicker">MARC MONFERRER · AI CONSULTANT &amp; FRONT-END DEVELOPER · BARCELONA</p>
+          <h1 id="hero-title">A premium demo of a personal <span>AI operating system.</span></h1>
+          <p class="demo-lead">JARVIS HQ brings daily planning, project spaces, knowledge, decision support and safe public-data modules into one elegant, accessible command center.</p>
+          <div class="demo-hero-actions">
+            <a class="demo-primary" href="#today">Explore the system ↓</a>
+            <a class="demo-secondary" href="#case-study">View the case study</a>
+          </div>
+          <div class="demo-trust-row" aria-label="Product principles">
+            <span>Privacy-first</span>
+            <span>Mobile-ready</span>
+            <span>Accessible</span>
+            <span>Modular</span>
+          </div>
+        </div>
+
+        <div class="demo-product-preview" aria-label="JARVIS HQ interface preview">
+          <div class="preview-bar">
+            <span><i></i> SYSTEM READY</span>
+            <strong>DEMO</strong>
+          </div>
+          <div class="preview-command">
+            <small>TODAY COMMAND BRIEF</small>
+            <strong>3 priorities · 2 complete</strong>
+            <div><i></i></div>
+          </div>
+          <div class="preview-grid">
+            <span style="--module:#ff8a36">PLAN <b>↗</b></span>
+            <span style="--module:#ff477e">PROJECTS <b>↗</b></span>
+            <span style="--module:#9f62ff">KNOWLEDGE <b>↗</b></span>
+            <span style="--module:#55e6a5">MARKETS <b>↗</b></span>
+          </div>
+          <div class="preview-prompt">
+            <small>AI COPILOT</small>
+            <p>“Turn today’s priorities into a focused action plan.”</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="demo-metrics" aria-label="Product metrics">
+        <article><small>OPERATING MODULES</small><strong>6</strong><span>One coherent interface</span></article>
+        <article><small>PRIVATE STORAGE</small><strong>Local</strong><span>Browser-only demo state</span></article>
+        <article><small>INSTALLATION</small><strong>0</strong><span>Runs directly on the web</span></article>
+        <article><small>DEVICE SUPPORT</small><strong>Any</strong><span>Responsive by design</span></article>
+      </section>
+
+      <section class="demo-section" id="today" aria-labelledby="today-title">
+        <div class="demo-section-head">
+          <div><small>INTERACTIVE DEMO</small><h2 id="today-title">Today Command Brief</h2></div>
+          <span class="demo-pill" id="demoProgress">0 of 3 complete</span>
+        </div>
+
+        <div class="today-demo-grid">
+          <article class="demo-panel priority-panel">
+            <div class="panel-heading">
+              <span>✓</span>
+              <div><small>FOCUS</small><h3>Top priorities</h3></div>
+            </div>
+            <p class="panel-intro">Define three outcomes. This interaction is saved only in this browser.</p>
+            <div class="demo-priority-list" id="demoPriorityList" aria-label="Demo priorities"></div>
+            <button class="text-button" type="button" id="resetDemoBrief">Reset demo</button>
+          </article>
+
+          <article class="demo-panel capture-panel">
+            <div class="panel-heading">
+              <span>✦</span>
+              <div><small>CAPTURE</small><h3>Quick note</h3></div>
+            </div>
+            <p class="panel-intro">Try the interface with non-sensitive sample text. Nothing is sent to a server.</p>
+            <textarea id="demoNote" maxlength="800" placeholder="Add a non-sensitive demo note…" aria-label="Demo quick note"></textarea>
+            <div class="note-meta"><span id="demoSaveStatus">Saved locally</span><span id="demoCharacterCount">0 / 800</span></div>
+            <div class="copilot-mini">
+              <div><small>SIMULATED COPILOT SUGGESTION</small><strong id="briefSuggestion">Add a priority to receive a suggestion.</strong></div>
+              <button type="button" id="generateSuggestion">Generate</button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="demo-section" id="markets" aria-labelledby="markets-title">
+        <div class="demo-section-head">
+          <div><small>FICTIONAL MARKET DEMO</small><h2 id="markets-title">Simulated Market Brief</h2></div>
+          <span class="demo-pill">Invented names · invented values</span>
+        </div>
+        <div class="market-demo-root" data-market-demo aria-live="polite" aria-busy="true">
+          <div class="market-demo-loading">Loading fictional market data…</div>
+        </div>
+      </section>
+
+      <section class="demo-section" id="sports" aria-labelledby="sports-title">
+        <div class="demo-section-head">
+          <div><small>CONFIGURABLE PUBLIC-DATA MODULE</small><h2 id="sports-title">Sports Briefing</h2></div>
+          <span class="demo-pill">Default favourites · public data</span>
+        </div>
+        <div class="sports-briefing-root" data-sports-briefing data-demo-favourites aria-live="polite" aria-busy="true">
+          <div class="sports-loading"><span>Loading sports briefing</span></div>
+        </div>
+      </section>
+
+      <section class="demo-section" id="modules" aria-labelledby="modules-title">
+        <div class="demo-section-head">
+          <div><small>MODULAR SYSTEM</small><h2 id="modules-title">One interface, focused workflows</h2></div>
+          <span class="demo-pill">Select a module</span>
+        </div>
+
+        <div class="module-layout">
+          <div class="module-grid" id="moduleGrid">
+            <button class="module-card active" type="button" data-module="planning" style="--module:#ff8a36"><span>✓</span><strong>Daily Planning</strong><small>Priorities and focused execution</small><b>01</b></button>
+            <button class="module-card" type="button" data-module="projects" style="--module:#ff477e"><span>◇</span><strong>Project Spaces</strong><small>Initiatives, decisions and next steps</small><b>02</b></button>
+            <button class="module-card" type="button" data-module="knowledge" style="--module:#9f62ff"><span>⌁</span><strong>Knowledge</strong><small>Learning, research and references</small><b>03</b></button>
+            <button class="module-card" type="button" data-module="markets" style="--module:#55e6a5"><span>↗</span><strong>Market Demo</strong><small>Clearly fictional symbols and values</small><b>04</b></button>
+            <button class="module-card" type="button" data-module="sports" style="--module:#73a8ff"><span>◉</span><strong>Sports Briefing</strong><small>Public schedules and cached results</small><b>05</b></button>
+            <button class="module-card" type="button" data-module="communication" style="--module:#ffb15c"><span>✉</span><strong>Communication Flow</strong><small>Fictional messages and actions</small><b>06</b></button>
+          </div>
+
+          <article class="module-detail demo-panel" id="moduleDetail" aria-live="polite">
+            <div class="module-detail-top"><span id="moduleIcon">✓</span><small id="moduleIndex">MODULE 01</small></div>
+            <h3 id="moduleTitle">Daily Planning</h3>
+            <p id="moduleDescription">Turn an open-ended day into a short, visible plan with priorities, quick capture and progress feedback.</p>
+            <ul id="moduleFeatures">
+              <li>Three outcome-based priorities</li>
+              <li>Daily quick-capture note</li>
+              <li>Local progress tracking</li>
+            </ul>
+            <div class="module-example" id="moduleExample"><small>EXAMPLE</small><strong>Plan the day in under 60 seconds.</strong></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="demo-section ai-section" aria-labelledby="ai-title">
+        <div class="demo-section-head">
+          <div><small>DECISION SUPPORT</small><h2 id="ai-title">AI Copilot command surface</h2></div>
+          <span class="demo-pill">Simulated responses</span>
+        </div>
+        <div class="ai-console">
+          <div class="ai-prompt-list" aria-label="Example AI prompts">
+            <button type="button" data-prompt="plan">Build a focused daily plan</button>
+            <button type="button" data-prompt="project">Clarify the next project step</button>
+            <button type="button" data-prompt="learn">Create a learning path</button>
+            <button type="button" data-prompt="decision">Compare two decisions</button>
+          </div>
+          <article class="ai-response" aria-live="polite">
+            <div><span class="ai-orb" aria-hidden="true">J</span><small>SIMULATED JARVIS RESPONSE</small></div>
+            <h3 id="aiResponseTitle">Select a command</h3>
+            <p id="aiResponseText">The public demo illustrates how focused AI workflows could live directly inside the command center.</p>
+            <ol id="aiResponseSteps">
+              <li>Choose a prompt from the command list.</li>
+              <li>Review the structured example response.</li>
+              <li>Continue the workflow in the relevant module.</li>
+            </ol>
+          </article>
+        </div>
+      </section>
+
+      <section class="demo-section" id="case-study" aria-labelledby="case-title">
+        <div class="demo-section-head">
+          <div><small>PRODUCT CASE STUDY</small><h2 id="case-title">From scattered tools to one operating layer</h2></div>
+          <span class="demo-pill">Public portfolio concept</span>
+        </div>
+
+        <div class="case-grid">
+          <article class="case-card"><span>01</span><small>THE PROBLEM</small><h3>Digital friction</h3><p>Daily information, apps, conversations and projects often live in separate places, creating unnecessary cognitive load.</p></article>
+          <article class="case-card featured"><span>02</span><small>THE SOLUTION</small><h3>A personal AI OS</h3><p>A modular command center that surfaces relevant context and AI workflows while keeping private source data out of the public demo.</p></article>
+          <article class="case-card"><span>03</span><small>THE OUTCOME</small><h3>Clarity and momentum</h3><p>Fewer navigation decisions, faster planning and a reusable foundation for tailored digital experiences.</p></article>
+        </div>
+      </section>
+
+      <section class="demo-section" id="architecture" aria-labelledby="architecture-title">
+        <div class="demo-section-head">
+          <div><small>PRIVACY &amp; ENGINEERING</small><h2 id="architecture-title">Lightweight by design</h2></div>
+          <span class="demo-pill">No account required</span>
+        </div>
+
+        <div class="architecture-grid">
+          <article class="architecture-copy demo-panel">
+            <h3>Public by design, private by separation</h3>
+            <p>The deployed artifact contains only approved portfolio files. Scenario content and market values are fictional; interactive priorities and notes stay in the visitor’s browser.</p>
+            <div class="architecture-points">
+              <span><i>1</i><b>Curated artifact</b><small>An explicit allowlist defines every deployed file.</small></span>
+              <span><i>2</i><b>Local state</b><small>Browser storage powers demo interactions.</small></span>
+              <span><i>3</i><b>Fail-safe data</b><small>Public-data modules degrade to clear unavailable states.</small></span>
+            </div>
+          </article>
+
+          <article class="stack-panel demo-panel">
+            <small>TECHNOLOGY STACK</small>
+            <h3>Simple tools, deliberate execution</h3>
+            <div class="stack-grid">
+              <span><b>HTML</b><small>Semantic structure</small></span>
+              <span><b>CSS</b><small>Responsive design system</small></span>
+              <span><b>JavaScript</b><small>Interactive local workflows</small></span>
+              <span><b>GitHub Pages</b><small>Curated static artifact</small></span>
+              <span><b>localStorage</b><small>Browser-only demo state</small></span>
+              <span><b>Validation</b><small>Privacy and secret checks</small></span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="demo-cta">
+        <div>
+          <small>DESIGNED BY MARC MONFERRER · BARCELONA</small>
+          <h2>Need a focused dashboard, prototype or AI-powered web experience?</h2>
+          <p>AI Consultant &amp; Front-End Developer turning practical ideas into accessible digital solutions.</p>
+        </div>
+        <div>
+          <a class="demo-primary" href="https://www.linkedin.com/in/marcmonferrer/" target="_blank" rel="noopener noreferrer">View LinkedIn ↗</a>
+          <a class="demo-secondary" href="mailto:marcmonferrer.ai@gmail.com">Contact by email</a>
+        </div>
+      </section>
+
+      <marc-professional-footer></marc-professional-footer>
+      <noscript>
+        <footer class="professional-footer professional-footer--fallback">
+          <strong>Marc Monferrer</strong>
+          <span>AI Consultant &amp; Front-End Developer · Barcelona</span>
+          <a href="mailto:marcmonferrer.ai@gmail.com">marcmonferrer.ai@gmail.com</a>
+          <a href="https://www.linkedin.com/in/marcmonferrer/">LinkedIn</a>
+        </footer>
+      </noscript>
+    </main>
+  </div>
+
+  <div class="demo-toast" id="demoToast" role="status" aria-live="polite"></div>
+  <script src="professional-contact.js"></script>
+  <script src="weather.js"></script>
+  <script src="market-demo.js"></script>
+  <script src="sports-briefing.js?v=2"></script>
+  <script src="portfolio-scenario.js"></script>
+  <script src="portfolio-demo.js"></script>
+</body>
+</html>

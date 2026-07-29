@@ -1,0 +1,24 @@
+# Files copied into the GitHub Pages artifact. Nothing else is deployed.
+.nojekyll
+404.html
+index.html
+portfolio.html
+portfolio-share.html
+share.html
+portfolio-demo.css
+portfolio-demo.js
+portfolio-scenario.css
+portfolio-scenario.js
+portfolio-favicon.svg
+portfolio-social.png
+professional-contact.css
+professional-contact.js
+weather.css
+weather.js
+market-demo.css
+market-demo.js
+fictional-market-data.json
+sports-briefing.css
+sports-briefing.js
+sports-data.json
+sports-favourites.json

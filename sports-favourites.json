@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "featured": {
+    "key": "fc-barcelona",
+    "name": "FC Barcelona",
+    "short": "FCB",
+    "sport": "Football",
+    "accent": "#a50044",
+    "source": {
+      "espn_team_id": "83",
+      "sportsdb_team_id": "133739",
+      "competitions": {
+        "esp.1": "Spanish LaLiga",
+        "uefa.champions": "UEFA Champions League",
+        "esp.copa_del_rey": "Copa del Rey",
+        "esp.super_cup": "Spanish Supercopa",
+        "club.friendly": "Club Friendly"
+      }
+    }
+  },
+  "compact": [
+    {
+      "key": "flyers",
+      "name": "Philadelphia Flyers",
+      "short": "PHI",
+      "sport": "NHL",
+      "accent": "#f74902",
+      "source": {
+        "sport": "hockey",
+        "league": "nhl",
+        "team": "phi"
+      }
+    },
+    {
+      "key": "eagles",
+      "name": "Philadelphia Eagles",
+      "short": "PHI",
+      "sport": "NFL",
+      "accent": "#004c54",
+      "source": {
+        "sport": "football",
+        "league": "nfl",
+        "team": "phi"
+      }
+    },
+    {
+      "key": "sixers",
+      "name": "Philadelphia 76ers",
+      "short": "PHI",
+      "sport": "NBA",
+      "accent": "#006bb6",
+      "source": {
+        "sport": "basketball",
+        "league": "nba",
+        "team": "phi"
+      }
+    },
+    {
+      "key": "phillies",
+      "name": "Philadelphia Phillies",
+      "short": "PHI",
+      "sport": "MLB",
+      "accent": "#e81828",
+      "source": {
+        "sport": "baseball",
+        "league": "mlb",
+        "team": "phi"
+      }
+    }
+  ]
+}

@@ -1,0 +1,192 @@
+{
+  "generated_at": "2026-07-29T10:17:54Z",
+  "source": "JARVIS HQ scheduled public sports feed",
+  "teams": {
+    "eagles": {
+      "accent": "#004c54",
+      "key": "eagles",
+      "latest": {
+        "competition": "NFL",
+        "date": "2026-01-04T21:25:00Z",
+        "home_away": "home",
+        "id": "espn:401772959",
+        "opponent": "Commanders",
+        "opponent_score": 24,
+        "result": "L",
+        "state": "completed",
+        "team_score": 17,
+        "venue": "Lincoln Financial Field"
+      },
+      "name": "Philadelphia Eagles",
+      "next": {
+        "competition": "NFL",
+        "date": "2026-09-13T20:25:00Z",
+        "home_away": "home",
+        "id": "espn:401872929",
+        "opponent": "Commanders",
+        "opponent_score": null,
+        "result": null,
+        "state": "scheduled",
+        "team_score": null,
+        "venue": "Lincoln Financial Field"
+      },
+      "record": "11-6",
+      "record_season": "2025",
+      "source": "ESPN public schedules",
+      "sport": "NFL",
+      "standing": "1st in NFC East",
+      "status": "Off-season \u00b7 next season scheduled"
+    },
+    "fc-barcelona": {
+      "accent": "#a50044",
+      "key": "fc-barcelona",
+      "latest": {
+        "competition": "Club Friendlies",
+        "date": "2026-07-24T18:00:00Z",
+        "home_away": "home",
+        "id": "sportsdb:2521609",
+        "opponent": "CE Europa",
+        "opponent_score": 1,
+        "result": "W",
+        "state": "completed",
+        "team_score": 4,
+        "venue": "Spotify Camp Nou"
+      },
+      "name": "FC Barcelona",
+      "next": [
+        {
+          "competition": "Club Friendly",
+          "date": "2026-07-31T18:45:00Z",
+          "home_away": "away",
+          "id": "espn:401886550",
+          "opponent": "Birmingham",
+          "opponent_score": null,
+          "result": null,
+          "state": "scheduled",
+          "team_score": null,
+          "venue": "St. Andrew's Stadium"
+        },
+        {
+          "competition": "Spanish LaLiga",
+          "date": "2026-08-23T19:30:00Z",
+          "home_away": "away",
+          "id": "espn:401882913",
+          "opponent": "Elche",
+          "opponent_score": null,
+          "result": null,
+          "state": "scheduled",
+          "team_score": null,
+          "venue": "Estadio Mart\u00ednez Valero"
+        }
+      ],
+      "source": "ESPN and TheSportsDB public schedules",
+      "sport": "Football",
+      "status": "Pre-season"
+    },
+    "flyers": {
+      "accent": "#f74902",
+      "key": "flyers",
+      "latest": {
+        "competition": "NHL",
+        "date": "2026-04-14T23:00:00Z",
+        "home_away": "home",
+        "id": "espn:401803645",
+        "opponent": "Canadiens",
+        "opponent_score": 2,
+        "result": "W",
+        "state": "completed",
+        "team_score": 4,
+        "venue": "Xfinity Mobile Arena"
+      },
+      "name": "Philadelphia Flyers",
+      "next": {
+        "competition": "NHL",
+        "date": "2026-09-30T23:30:00Z",
+        "home_away": "home",
+        "id": "espn:401891821",
+        "opponent": "Penguins",
+        "opponent_score": null,
+        "result": null,
+        "state": "scheduled",
+        "team_score": null,
+        "venue": "Xfinity Mobile Arena"
+      },
+      "record": "43-27-12",
+      "record_season": "2025-26",
+      "source": "ESPN public schedules",
+      "sport": "NHL",
+      "standing": "2nd in Metropolitan Division",
+      "status": "Off-season \u00b7 next season scheduled"
+    },
+    "phillies": {
+      "accent": "#e81828",
+      "key": "phillies",
+      "latest": {
+        "competition": "MLB",
+        "date": "2026-07-28T22:40:00Z",
+        "home_away": "away",
+        "id": "espn:401816296",
+        "opponent": "Marlins",
+        "opponent_score": 1,
+        "result": "L",
+        "state": "completed",
+        "team_score": 0,
+        "venue": "loanDepot park"
+      },
+      "name": "Philadelphia Phillies",
+      "next": {
+        "competition": "MLB",
+        "date": "2026-07-29T16:10:00Z",
+        "home_away": "away",
+        "id": "espn:401816311",
+        "opponent": "Marlins",
+        "opponent_score": null,
+        "result": null,
+        "state": "scheduled",
+        "team_score": null,
+        "venue": "loanDepot park"
+      },
+      "record": "57-51",
+      "record_season": "2026",
+      "source": "ESPN public schedules",
+      "sport": "MLB",
+      "standing": "2nd in NL East",
+      "status": "Season in progress"
+    },
+    "sixers": {
+      "accent": "#006bb6",
+      "key": "sixers",
+      "latest": {
+        "competition": "NBA",
+        "date": "2026-04-12T22:00:00Z",
+        "home_away": "home",
+        "id": "espn:401811046",
+        "opponent": "Bucks",
+        "opponent_score": 106,
+        "result": "W",
+        "state": "completed",
+        "team_score": 126,
+        "venue": "Xfinity Mobile Arena"
+      },
+      "name": "Philadelphia 76ers",
+      "next": {
+        "competition": "NBA",
+        "date": "2026-10-08T23:30:00Z",
+        "home_away": "away",
+        "id": "espn:401901823",
+        "opponent": "Nets",
+        "opponent_score": null,
+        "result": null,
+        "state": "scheduled",
+        "team_score": null,
+        "venue": "Barclays Center"
+      },
+      "record": "45-37",
+      "record_season": "2025-26",
+      "source": "ESPN public schedules",
+      "sport": "NBA",
+      "standing": null,
+      "status": "Off-season \u00b7 next season scheduled"
+    }
+  }
+}

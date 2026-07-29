@@ -1,0 +1,30 @@
+{
+  "fictional": true,
+  "disclaimer": "All names, symbols and values are invented for interface demonstration. Nothing shown is market data or financial advice.",
+  "assets": [
+    {
+      "symbol": "NOVA",
+      "name": "Nova Systems Index",
+      "value": 128.42,
+      "change_percent": 1.8
+    },
+    {
+      "symbol": "ORBT",
+      "name": "Orbit Digital Composite",
+      "value": 94.16,
+      "change_percent": -0.6
+    },
+    {
+      "symbol": "CDRX",
+      "name": "Cedar Research Basket",
+      "value": 211.08,
+      "change_percent": 0.4
+    },
+    {
+      "symbol": "ATLS",
+      "name": "Atlas Product Benchmark",
+      "value": 76.35,
+      "change_percent": 2.1
+    }
+  ]
+}
