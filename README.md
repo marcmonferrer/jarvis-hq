@@ -40,4 +40,9 @@ python scripts/validate_release.py
 
 ## Project status
 
-Stage 2A local release candidate. No commit or deployment has been performed.
+The sanitized JARVIS HQ portfolio demo is deployed in production.
+
+- Production URL: [https://marcmonferrer.github.io/jarvis-hq/](https://marcmonferrer.github.io/jarvis-hq/)
+- Production commit: `02e7c57c4b72e28fbcb2dc0440e1d5a707045e94`
+- Deployment: Curated GitHub Actions Pages workflow
+- Validation: Privacy, secret, artifact and route checks passing
